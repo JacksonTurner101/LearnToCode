@@ -1,0 +1,16 @@
+*{
+    font-family: Arial;
+}
+body{
+    background-color: grey;
+    align-content: center;
+    text-align: center;
+    border: 1px solid black;
+
+}
+#main-page-container{
+    background-color: aqua;
+}
+#title{
+    font-size: 60px;
+}
