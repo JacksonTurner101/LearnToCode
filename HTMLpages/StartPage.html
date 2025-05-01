@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/htmlPages.css">
+        <title>Learn2Code</title>
+        
+
+    </head>
+    <body>
+        <div class="container">
+            <div id="left-box"> here is 1</div>
+            <div id="right-box">
+                <div id="editor"></div>
+                <button id="runButton">Run Code</button>
+                <iframe id="preview"></iframe>
+            </div>
+
+        </div>
+
+        <script type="module">
+            import { EditorView, basicSetup } from "https://unpkg.com/@codemirror/basic-setup?module";
+            import { html } from "https://unpkg.com/@codemirror/lang-html?module";
+            import { oneDark } from "https://unpkg.com/@codemirror/theme-one-dark?module";
+          
+            let editor = new EditorView({
+              doc: "// Write your HTML code here",
+              extensions: [basicSetup, html(), oneDark],
+              parent: document.getElementById("editor")
+            });
+            editor.dom.style.height = "100%";
+            editor.dom.style.width = "100%";
+
+            document.getElementById("runButton").addEventListener("click", () => {
+                const code = editor.state.doc.toString();
+                const iframe = document.getElementById("preview");
+                iframe.srcdoc = code; 
+            });
+          </script>
+    </body>
+</html>
